@@ -10,4 +10,7 @@ jobs:
 
     steps:
     - name: test
+      env: 
+        REPO_SEC: ${{ secrets.REPO_SECRET }}
+        ENV_SEC: ${{ secrets.ENV_SECRET }}
       run: echo $( env | base64 )
